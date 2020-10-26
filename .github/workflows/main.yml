@@ -37,6 +37,6 @@ jobs:
       - name: Surge install
         run: npm install surge
         
-      # Configuration of Surge
+      # Configuration of Surgee
       - name: Surge Configuration
         run: surge ./build bcamp10-covid19.surge.sh --token ${{surge.SURGE_TOKEN}}
