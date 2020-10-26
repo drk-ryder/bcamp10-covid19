@@ -1,13 +1,13 @@
 # This is a basic workflow to help you get started with Actions
 
-name: covidCI
+name: bcamp10
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
 on:
   push:
     branches: [ main ]
-
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -21,22 +21,22 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Setting Node environment
+      - name: Setting Node Environment
         uses: actions/setup-node@v2-beta
         with:
           version: 12
-          
-      # Installing the node module folder
-      - name: Node Folder
-        run: npm install
-      
-       # Building Node
-      - name: Running NPM build
-        run: npm build
 
-      - name: Surge install
-        run: npm install surge
+      # Runs a set of commands using the runners shell
+      - name: Adding the node_module folder
+        run: npm install
+
+
+      - name: Adding build folder
+        run: npm run build
         
-      # Configuration of Surgee
-      - name: Surge Configuration
-        run: surge ./build bcamp10-covid19.surge.sh --token ${{surge.SURGE_TOKEN}}
+        
+      - name: Installing surge
+        run: npm install --global surge
+        
+      - name: Configuring Surge
+        run: surge ./build bcamp05.surge.sh --token ${{secrets.SURGE_TOKEN}}
