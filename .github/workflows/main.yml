@@ -33,11 +33,10 @@ jobs:
        # Building Node
       - name: Running NPM build
         run: npm build
-  
-      # Installing Surge
-        - name: Surge Installation
-          run: npm install surge
+
+      - name: Surge install
+        run: npm install surge
         
       # Configuration of Surge
-        - name: Surge Configuration
-          run: surge ./build bcamp10-covid19.surge.sh --token ${{surge.SURGE_TOKEN}}
+      - name: Surge Configuration
+        run: surge ./build bcamp10-covid19.surge.sh --token ${{surge.SURGE_TOKEN}}
